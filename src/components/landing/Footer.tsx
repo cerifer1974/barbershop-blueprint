@@ -1,22 +1,18 @@
-import { Instagram, MessageCircle, Scissors } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
+import { BrandMark } from "./BrandMark";
 import { barberConfig } from "@/config/barber.config";
 
 export function Footer() {
-  const { brand, links, address, contact } = barberConfig;
+  const { brand, links, address, contact, copy, isDemo } = barberConfig;
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[2fr_1fr_1fr] md:px-8">
         <div>
-          <div className="flex items-center gap-2.5">
-            <span className="flex size-9 items-center justify-center rounded-sm bg-primary text-primary-foreground">
-              <Scissors className="size-4.5" />
-            </span>
-            <span className="font-display text-2xl tracking-wide text-foreground">{brand.name}</span>
-          </div>
+          <BrandMark />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            {brand.tagline} em {brand.city}. Corte, barba e cuidado com padrão de excelência.
+            {brand.footerText}
           </p>
         </div>
         <div className="text-sm">
@@ -51,7 +47,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-muted-foreground md:px-8">
-          © {year} {brand.name}. Site de demonstração — todas as informações são fictícias.
+          © {year} {brand.name}.{isDemo && ` ${copy.demoNotice}`}
         </p>
       </div>
     </footer>

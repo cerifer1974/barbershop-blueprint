@@ -30,14 +30,21 @@ export function About() {
               {p}
             </p>
           ))}
-          <div className="mt-10 grid grid-cols-3 gap-6 border-t border-cream-foreground/15 pt-8">
-            {about.stats.map((s) => (
-              <div key={s.label}>
-                <p className="font-display text-4xl text-primary md:text-5xl">{s.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-wider opacity-70">{s.label}</p>
+          {about.stats.length > 0 && (
+            <div className="mt-10 border-t border-cream-foreground/15 pt-8">
+              <div className="grid grid-cols-3 gap-6">
+                {about.stats.map((s) => (
+                  <div key={s.label}>
+                    <p className="font-display text-4xl text-primary md:text-5xl">{s.value}</p>
+                    <p className="mt-1 text-xs uppercase tracking-wider opacity-70">{s.label}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              {about.statsDisclaimer && (
+                <p className="mt-4 text-xs opacity-60">{about.statsDisclaimer}</p>
+              )}
+            </div>
+          )}
         </Reveal>
       </div>
     </section>

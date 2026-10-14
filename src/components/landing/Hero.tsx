@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { barberConfig } from "@/config/barber.config";
 
 export function Hero() {
-  const { hero, links } = barberConfig;
+  const { hero, links, copy, services } = barberConfig;
 
   return (
     <section id="topo" className="relative overflow-hidden">
@@ -27,15 +27,17 @@ export function Hero() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-4 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
             >
-              Agendar horário
+              {copy.bookCta}
               <ArrowRight className="size-4" />
             </a>
-            <a
-              href="#servicos"
-              className="rounded-sm border border-border px-7 py-4 text-base font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              Ver serviços
-            </a>
+            {!!services?.items.length && (
+              <a
+                href="#servicos"
+                className="rounded-sm border border-border px-7 py-4 text-base font-medium text-foreground transition-colors hover:bg-secondary"
+              >
+                {copy.heroSecondaryCta}
+              </a>
+            )}
           </div>
         </div>
 
