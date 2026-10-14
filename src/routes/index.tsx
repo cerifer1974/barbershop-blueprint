@@ -11,8 +11,7 @@ import { Location } from "@/components/landing/Location";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { Footer } from "@/components/landing/Footer";
 
-const title = `${barberConfig.brand.name} — ${barberConfig.brand.tagline} em ${barberConfig.brand.city}`;
-const description = barberConfig.hero.subtitle;
+const { title, description } = barberConfig.seo;
 
 export const Route = createFileRoute("/")({
   head: () => ({

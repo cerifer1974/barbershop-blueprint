@@ -19,8 +19,9 @@
  */
 
 @theme inline {
-  --font-display: "Bebas Neue", "Archivo", sans-serif;
-  --font-sans: "Archivo", system-ui, sans-serif;
+  /* Fontes e cores reais vêm de src/config/barber.config.ts (injetadas em :root). */
+  --font-display: var(--font-display-family);
+  --font-sans: var(--font-body-family);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-cream: var(--cream);
@@ -69,6 +70,8 @@
 
 :root {
   --radius: 0.625rem;
+  --font-display-family: "Bebas Neue", "Archivo", sans-serif;
+  --font-body-family: "Archivo", system-ui, sans-serif;
   --brand: oklch(0.72 0.13 75);
   --brand-foreground: oklch(0.16 0.02 60);
   --cream: oklch(0.955 0.012 80);

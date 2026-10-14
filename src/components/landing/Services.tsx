@@ -3,7 +3,7 @@ import { barberConfig } from "@/config/barber.config";
 import { Reveal } from "@/components/Reveal";
 
 export function Services() {
-  const { services, links } = barberConfig;
+  const { services, links, copy } = barberConfig;
   if (!services || services.items.length === 0) return null;
 
   return (
@@ -46,7 +46,7 @@ export function Services() {
                     rel="noopener noreferrer"
                     className="text-sm font-semibold text-primary transition-opacity md:opacity-0 md:group-hover:opacity-100"
                   >
-                    Agendar →
+                    {copy.bookCtaShort}
                   </a>
                 </div>
               </div>

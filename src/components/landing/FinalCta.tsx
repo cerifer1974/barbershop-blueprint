@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { barberConfig } from "@/config/barber.config";
 
 export function FinalCta() {
-  const { finalCta, links, about } = barberConfig;
+  const { finalCta, links, about, copy } = barberConfig;
 
   return (
     <section className="relative overflow-hidden">
@@ -24,7 +24,7 @@ export function FinalCta() {
           rel="noopener noreferrer"
           className="mt-10 inline-flex items-center gap-2 rounded-sm bg-primary px-9 py-4 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
         >
-          Agendar pelo WhatsApp
+          {copy.finalCtaButton}
           <ArrowRight className="size-4" />
         </a>
       </div>

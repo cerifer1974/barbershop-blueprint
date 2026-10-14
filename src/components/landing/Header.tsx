@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Scissors } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { BrandMark } from "./BrandMark";
 import { barberConfig } from "@/config/barber.config";
 import { cn } from "@/lib/utils";
 
+const { copy, services, team, gallery } = barberConfig;
+
+// Links do menu somem automaticamente quando a seção correspondente está oculta.
 const NAV = [
-  { label: "A casa", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Equipe", href: "#equipe" },
-  { label: "Galeria", href: "#galeria" },
-  { label: "Contato", href: "#contato" },
-];
+  { label: copy.nav.about, href: "#sobre", show: true },
+  { label: copy.nav.services, href: "#servicos", show: !!services?.items.length },
+  { label: copy.nav.team, href: "#equipe", show: !!team?.members.length },
+  { label: copy.nav.gallery, href: "#galeria", show: !!gallery?.images.length },
+  { label: copy.nav.contact, href: "#contato", show: true },
+].filter((item) => item.show);
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { brand, links } = barberConfig;
+  const { links } = barberConfig;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -33,13 +37,8 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
-        <a href="#topo" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-sm bg-primary text-primary-foreground">
-            <Scissors className="size-4.5" />
-          </span>
-          <span className="font-display text-2xl tracking-wide text-foreground">
-            {brand.name}
-          </span>
+        <a href="#topo">
+          <BrandMark />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -58,7 +57,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
           >
-            Agendar horário
+            {copy.bookCta}
           </a>
         </nav>
 
@@ -90,7 +89,7 @@ export function Header() {
               rel="noopener noreferrer"
               className="mt-3 rounded-sm bg-primary px-5 py-3.5 text-center text-base font-semibold text-primary-foreground"
             >
-              Agendar horário
+              {copy.bookCta}
             </a>
           </div>
         </nav>

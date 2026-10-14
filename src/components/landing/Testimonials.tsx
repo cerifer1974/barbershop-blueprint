@@ -3,12 +3,15 @@ import { Reveal } from "@/components/Reveal";
 
 export function Testimonials() {
   const { testimonials, differentials } = barberConfig;
+  const hasDiff = differentials.length > 0;
+  const hasTestimonials = !!testimonials && testimonials.items.length > 0;
+  if (!hasDiff && !hasTestimonials) return null;
 
   return (
     <section className="bg-cream text-cream-foreground">
       <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        {differentials.length > 0 && (
-          <div className="grid gap-10 border-b border-cream-foreground/15 pb-16 sm:grid-cols-2 lg:grid-cols-4">
+        {hasDiff && (
+          <div className={`grid gap-10 sm:grid-cols-2 lg:grid-cols-4 ${hasTestimonials ? "border-b border-cream-foreground/15 pb-16" : ""}`}>
             {differentials.map((d, i) => (
               <Reveal key={d.title} delay={i * 80}>
                 <p className="font-display text-5xl text-primary">0{i + 1}</p>
@@ -19,8 +22,8 @@ export function Testimonials() {
           </div>
         )}
 
-        {testimonials && testimonials.items.length > 0 && (
-          <div className="pt-16">
+        {testimonials && hasTestimonials && (
+          <div className={hasDiff ? "pt-16" : ""}>
             <Reveal className="mb-12">
               <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
                 <span className="h-px w-8 bg-primary" />

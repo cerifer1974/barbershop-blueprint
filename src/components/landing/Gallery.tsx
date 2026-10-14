@@ -9,7 +9,7 @@ const LAYOUT = [
 ];
 
 export function Gallery() {
-  const { gallery, links } = barberConfig;
+  const { gallery, links, copy } = barberConfig;
   if (!gallery || gallery.images.length === 0) return null;
 
   return (
@@ -31,7 +31,7 @@ export function Gallery() {
             rel="noopener noreferrer"
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
-            Siga no Instagram →
+            {copy.instagramCta}
           </a>
         </Reveal>
 

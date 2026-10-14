@@ -3,8 +3,8 @@ import { barberConfig } from "@/config/barber.config";
 import { Reveal } from "@/components/Reveal";
 
 export function Location() {
-  const { address, hours, contact, links } = barberConfig;
-  const phoneHref = `tel:+55${contact.phone.replace(/\D/g, "")}`;
+  const { address, hours, contact, links, copy, locale } = barberConfig;
+  const phoneHref = `tel:+${locale.phoneCountryCode}${contact.phone.replace(/\D/g, "")}`;
 
   return (
     <section id="contato" className="bg-background">
@@ -12,10 +12,10 @@ export function Location() {
         <Reveal>
           <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             <span className="h-px w-8 bg-primary" />
-            Visite
+            {copy.locationEyebrow}
           </p>
           <h2 className="font-display text-5xl leading-[0.95] tracking-wide text-foreground md:text-6xl">
-            Onde estamos
+            {copy.locationTitle}
           </h2>
         </Reveal>
 
@@ -34,7 +34,7 @@ export function Location() {
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-sm font-semibold text-primary underline-offset-4 hover:underline"
               >
-                Abrir no mapa →
+                {copy.mapCta}
               </a>
             </div>
           </div>
@@ -52,6 +52,7 @@ export function Location() {
           </div>
         </Reveal>
 
+        {hours.length > 0 && (
         <Reveal delay={200}>
           <div className="flex gap-4">
             <Clock className="mt-1 size-5 shrink-0 text-primary" />
@@ -65,6 +66,7 @@ export function Location() {
             </dl>
           </div>
         </Reveal>
+        )}
       </div>
     </section>
   );
