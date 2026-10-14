@@ -43,11 +43,58 @@ export interface Testimonial {
   detail: string;
 }
 
+export interface ThemeConfig {
+  /** Cores em qualquer formato CSS válido (oklch, hex, rgb). */
+  colors: {
+    background: string;
+    foreground: string;
+    surface: string;
+    surfaceAlt: string;
+    mutedForeground: string;
+    primary: string;
+    primaryForeground: string;
+    light: string;
+    lightForeground: string;
+  };
+  fonts: {
+    display: string;
+    body: string;
+    /** URL do Google Fonts (ou outro CSS de fontes) que carrega as famílias acima. */
+    stylesheetUrl: string;
+  };
+}
+
 export interface BarberConfig {
+  /** true = página exibe avisos de que os dados são demonstrativos. */
+  isDemo: boolean;
+  locale: {
+    lang: string;
+    phoneCountryCode: string;
+  };
   brand: {
     name: string;
     tagline: string;
     city: string;
+    /** Imagem do logotipo. Se null, usa o ícone de tesoura padrão. */
+    logo: { src: string; alt: string } | null;
+    footerText: string;
+  };
+  theme: ThemeConfig;
+  seo: {
+    title: string;
+    description: string;
+  };
+  copy: {
+    nav: { about: string; services: string; team: string; gallery: string; contact: string };
+    bookCta: string;
+    bookCtaShort: string;
+    heroSecondaryCta: string;
+    finalCtaButton: string;
+    instagramCta: string;
+    locationEyebrow: string;
+    locationTitle: string;
+    mapCta: string;
+    demoNotice: string;
   };
   links: {
     whatsapp: string;
@@ -65,6 +112,7 @@ export interface BarberConfig {
     city: string;
     zip: string;
   };
+  /** Lista vazia oculta o bloco de horários. */
   hours: Array<{ days: string; time: string }>;
   hero: {
     eyebrow: string;
@@ -78,7 +126,9 @@ export interface BarberConfig {
     eyebrow: string;
     title: string;
     paragraphs: string[];
+    /** Estatísticas opcionais. Use apenas números reais; lista vazia oculta o bloco. */
     stats: Array<{ value: string; label: string }>;
+    statsDisclaimer: string | null;
     image: string;
     imageAlt: string;
   };
@@ -105,6 +155,7 @@ export interface BarberConfig {
     items: Testimonial[];
     disclaimer: string;
   } | null;
+  /** Lista vazia oculta os diferenciais. */
   differentials: Array<{ title: string; description: string }>;
   finalCta: {
     title: string;
@@ -113,10 +164,53 @@ export interface BarberConfig {
 }
 
 export const barberConfig: BarberConfig = {
+  isDemo: true,
+  locale: {
+    lang: "pt-BR",
+    phoneCountryCode: "55",
+  },
   brand: {
     name: "Navalha & Nó",
     tagline: "Barbearia Premium",
     city: "São Paulo",
+    logo: null,
+    footerText: "Barbearia Premium em São Paulo. Corte, barba e cuidado com padrão de excelência.",
+  },
+  theme: {
+    colors: {
+      background: "oklch(0.16 0.015 60)",
+      foreground: "oklch(0.94 0.01 80)",
+      surface: "oklch(0.2 0.018 60)",
+      surfaceAlt: "oklch(0.24 0.02 60)",
+      mutedForeground: "oklch(0.68 0.02 70)",
+      primary: "oklch(0.72 0.13 75)",
+      primaryForeground: "oklch(0.16 0.02 60)",
+      light: "oklch(0.955 0.012 80)",
+      lightForeground: "oklch(0.2 0.02 60)",
+    },
+    fonts: {
+      display: '"Bebas Neue", "Archivo", sans-serif',
+      body: '"Archivo", system-ui, sans-serif',
+      stylesheetUrl:
+        "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bebas+Neue&display=swap",
+    },
+  },
+  seo: {
+    title: "Navalha & Nó — Barbearia Premium em São Paulo",
+    description:
+      "Cortes clássicos e contemporâneos, barba na navalha e um ritual de cuidado pensado para o homem moderno.",
+  },
+  copy: {
+    nav: { about: "A casa", services: "Serviços", team: "Equipe", gallery: "Galeria", contact: "Contato" },
+    bookCta: "Agendar horário",
+    bookCtaShort: "Agendar →",
+    heroSecondaryCta: "Ver serviços",
+    finalCtaButton: "Agendar pelo WhatsApp",
+    instagramCta: "Siga no Instagram →",
+    locationEyebrow: "Visite",
+    locationTitle: "Onde estamos",
+    mapCta: "Abrir no mapa →",
+    demoNotice: "Site de demonstração — todas as informações são fictícias.",
   },
   links: {
     whatsapp: "https://wa.me/5511999990000?text=Ol%C3%A1!%20Quero%20agendar%20um%20hor%C3%A1rio.",
@@ -160,6 +254,7 @@ export const barberConfig: BarberConfig = {
       { value: "18k", label: "cortes realizados" },
       { value: "4,9", label: "nota média" },
     ],
+    statsDisclaimer: "Números fictícios, apenas para demonstração.",
     image: interiorImg,
     imageAlt: "Interior da barbearia com cadeiras de couro e iluminação quente",
   },
