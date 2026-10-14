@@ -1,24 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { barberConfig } from "@/config/barber.config";
+import { Header } from "@/components/landing/Header";
+import { Hero } from "@/components/landing/Hero";
+import { About } from "@/components/landing/About";
+import { Services } from "@/components/landing/Services";
+import { Team } from "@/components/landing/Team";
+import { Gallery } from "@/components/landing/Gallery";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { Location } from "@/components/landing/Location";
+import { FinalCta } from "@/components/landing/FinalCta";
+import { Footer } from "@/components/landing/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = `${barberConfig.brand.name} — ${barberConfig.brand.tagline} em ${barberConfig.brand.city}`;
+const description = barberConfig.hero.subtitle;
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Team />
+        <Gallery />
+        <Testimonials />
+        <Location />
+        <FinalCta />
+      </main>
+      <Footer />
     </div>
   );
 }
