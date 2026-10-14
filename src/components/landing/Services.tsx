@@ -44,7 +44,7 @@ export function Services() {
                     href={links.booking}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100"
+                    className="text-sm font-semibold text-primary transition-opacity md:opacity-0 md:group-hover:opacity-100"
                   >
                     Agendar →
                   </a>
