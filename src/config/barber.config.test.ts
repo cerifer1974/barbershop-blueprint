@@ -41,8 +41,9 @@ describe("barber.config", () => {
 
   it("valida itens de serviço incompletos", () => {
     const broken = structuredClone(barberConfig);
-    broken.services!.items[0].price = "";
-    broken.services!.items[1].durationMinutes = 0;
+    const items = broken.services!.items;
+    items[0]!.price = "";
+    items[1]!.durationMinutes = 0;
     const issues = validateBarberConfig(broken);
     expect(issues.map((i) => i.path)).toEqual(
       expect.arrayContaining(["services.items[0].price", "services.items[1].durationMinutes"]),
