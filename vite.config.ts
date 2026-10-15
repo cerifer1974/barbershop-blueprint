@@ -27,7 +27,7 @@ function validateBarberConfigPlugin(): Plugin {
       try {
         const cfg = await server.ssrLoadModule("/src/config/barber.config.ts");
         const val = await server.ssrLoadModule("/src/config/validate-config.ts");
-        const issues = val.validateBarberConfig(cfg.barberConfig) as { path: string; message: string }[];
+        const issues = val["validateBarberConfig"](cfg["barberConfig"]) as { path: string; message: string }[];
         if (issues.length) {
           const list = issues.map((i) => `  - ${i.path}: ${i.message}`).join("\n");
           throw new Error(`barber.config.ts inválido:\n${list}`);
