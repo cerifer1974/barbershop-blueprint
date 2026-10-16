@@ -1,5 +1,5 @@
 # Template replication
-- [ ] Preserve original page and configuration; introduce independent configuration injection.
-- [ ] Create Horizonte configuration and editorial assets using existing sections.
-- [ ] Validate both configurations at build time and test isolation.
-- [ ] Check desktop/mobile and report actual results and remaining fixed values.
+- [x] Preserve original page and configuration; introduce independent configuration injection.
+- [x] Create Horizonte configuration and editorial assets using existing sections.
+- [x] Validate both configurations at build time and test isolation.
+- [x] Check desktop/mobile and report actual results and remaining fixed values.
