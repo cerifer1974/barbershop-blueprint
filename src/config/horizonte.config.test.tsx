@@ -43,7 +43,9 @@ describe("Independent Horizonte demo", () => {
   });
   it("renders configured destinations and no invented reviews or statistics", () => {
     const markup = renderBrand();
-    for (const url of Object.values(horizonteConfig.links)) expect(markup).toContain(url);
+    const document = new DOMParser().parseFromString(markup, "text/html");
+    const destinations = Array.from(document.querySelectorAll("a"), a => a.getAttribute("href"));
+    for (const url of Object.values(horizonteConfig.links)) expect(destinations).toContain(url);
     expect(horizonteConfig.testimonials).toBeNull();
     expect(horizonteConfig.about.stats).toEqual([]);
     expect(markup).not.toContain("nota média");
