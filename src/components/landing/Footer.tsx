@@ -1,9 +1,9 @@
 import { Instagram, MessageCircle } from "lucide-react";
 import { BrandMark } from "./BrandMark";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 
 export function Footer() {
-  const { brand, links, address, contact, copy, isDemo } = barberConfig;
+  const { brand, links, address, contact, copy, isDemo } = useBarberConfig();
   const year = new Date().getFullYear();
 
   return (

@@ -1,8 +1,8 @@
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 export function About() {
-  const { about } = barberConfig;
+  const { about } = useBarberConfig();
 
   return (
     <section id="sobre" className="bg-cream text-cream-foreground">

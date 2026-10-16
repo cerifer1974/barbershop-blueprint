@@ -1,4 +1,4 @@
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 const LAYOUT = [
@@ -9,7 +9,7 @@ const LAYOUT = [
 ];
 
 export function Gallery() {
-  const { gallery, links, copy } = barberConfig;
+  const { gallery, links, copy } = useBarberConfig();
   if (!gallery || gallery.images.length === 0) return null;
 
   return (

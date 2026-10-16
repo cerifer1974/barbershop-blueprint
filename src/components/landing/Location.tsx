@@ -1,9 +1,9 @@
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 export function Location() {
-  const { address, hours, contact, links, copy, locale } = barberConfig;
+  const { address, hours, contact, links, copy, locale } = useBarberConfig();
   const phoneHref = `tel:+${locale.phoneCountryCode}${contact.phone.replace(/\D/g, "")}`;
 
   return (

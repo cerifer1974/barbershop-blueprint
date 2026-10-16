@@ -1,8 +1,8 @@
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 export function Testimonials() {
-  const { testimonials, differentials } = barberConfig;
+  const { testimonials, differentials } = useBarberConfig();
   const hasDiff = differentials.length > 0;
   const hasTestimonials = !!testimonials && testimonials.items.length > 0;
   if (!hasDiff && !hasTestimonials) return null;

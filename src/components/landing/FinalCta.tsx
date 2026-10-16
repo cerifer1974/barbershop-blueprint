@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 
 export function FinalCta() {
-  const { finalCta, links, about, copy } = barberConfig;
+  const { finalCta, links, about, copy } = useBarberConfig();
 
   return (
     <section className="relative overflow-hidden">
