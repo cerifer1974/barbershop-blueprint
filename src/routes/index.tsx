@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { barberConfig } from "@/config/barber.config";
+import type { BarberConfig } from "@/config/barber.config";
+import { BarberConfigContext } from "@/config/barber-context";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
 import { About } from "@/components/landing/About";
@@ -28,8 +30,13 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  return <BarberLanding config={barberConfig} />;
+}
+
+export function BarberLanding({ config, themeId }: { config: BarberConfig; themeId?: string }) {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <BarberConfigContext.Provider value={config}>
+    <div data-barber-theme={themeId} className="min-h-screen bg-background font-sans text-foreground antialiased">
       <Header />
       <main>
         <Hero />
@@ -43,5 +50,6 @@ function Index() {
       </main>
       <Footer />
     </div>
+    </BarberConfigContext.Provider>
   );
 }
