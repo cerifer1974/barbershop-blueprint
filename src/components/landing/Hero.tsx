@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 
 export function Hero() {
-  const { hero, links, copy, services } = barberConfig;
+  const { hero, links, copy, services } = useBarberConfig();
 
   return (
     <section id="topo" className="relative overflow-hidden">

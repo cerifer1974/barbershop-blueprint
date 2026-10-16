@@ -1,9 +1,9 @@
 import { Clock } from "lucide-react";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 export function Services() {
-  const { services, links, copy } = barberConfig;
+  const { services, links, copy } = useBarberConfig();
   if (!services || services.items.length === 0) return null;
 
   return (

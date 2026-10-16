@@ -5,7 +5,7 @@ import type { ThemeConfig } from "./barber.config";
  * Os componentes usam apenas tokens semânticos (bg-primary, text-foreground…),
  * então trocar as cores aqui atualiza toda a página de forma consistente.
  */
-export function buildThemeCss({ colors: c, fonts }: ThemeConfig): string {
+export function buildThemeCss({ colors: c, fonts }: ThemeConfig, selector = ":root"): string {
   const vars: Record<string, string> = {
     "--background": c.background,
     "--foreground": c.foreground,
@@ -32,5 +32,5 @@ export function buildThemeCss({ colors: c, fonts }: ThemeConfig): string {
   const body = Object.entries(vars)
     .map(([k, v]) => `${k}:${v.replace(/[<>{}]/g, "")};`)
     .join("");
-  return `:root{${body}}`;
+  return `${selector}{${body}}`;
 }

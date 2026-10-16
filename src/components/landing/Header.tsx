@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { BrandMark } from "./BrandMark";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { cn } from "@/lib/utils";
 
-const { copy, services, team, gallery } = barberConfig;
+export function Header() {
+const { copy, services, team, gallery } = useBarberConfig();
 
 // Links do menu somem automaticamente quando a seção correspondente está oculta.
 const NAV = [
@@ -15,10 +16,10 @@ const NAV = [
   { label: copy.nav.contact, href: "#contato", show: true },
 ].filter((item) => item.show);
 
-export function Header() {
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { links } = barberConfig;
+  const { links } = useBarberConfig();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

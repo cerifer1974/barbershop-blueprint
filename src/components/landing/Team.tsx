@@ -1,8 +1,8 @@
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 import { Reveal } from "@/components/Reveal";
 
 export function Team() {
-  const { team } = barberConfig;
+  const { team } = useBarberConfig();
   if (!team || team.members.length === 0) return null;
 
   return (

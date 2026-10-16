@@ -1,9 +1,9 @@
 import { Scissors } from "lucide-react";
-import { barberConfig } from "@/config/barber.config";
+import { useBarberConfig } from "@/config/barber-context";
 
 /** Logotipo + nome. Usa brand.logo da configuração ou o ícone padrão. */
 export function BrandMark() {
-  const { brand } = barberConfig;
+  const { brand } = useBarberConfig();
   return (
     <span className="flex items-center gap-2.5">
       {brand.logo ? (

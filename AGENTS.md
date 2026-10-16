@@ -10,6 +10,8 @@
 <!-- LOVABLE:END -->
 
 ## Architecture
-- All business-specific data (brand, theme colors/fonts, copy, services, team, images, contacts, links) lives only in `src/config/barber.config.ts`; components must read from it and never hardcode client data — enables reuse for new clients by swapping one file.
+- Each brand owns an independent typed configuration in `src/config/*config.ts`; existing landing components consume `BarberConfigContext`, defaulting to the original brand — prevents client data leakage while preserving the original page.
+- The original brand stays at `/`; `/horizonte` renders the same landing composition with its own configuration and route-scoped theme and font stylesheet — isolates brand styling without a redesign.
+- Production build validation must check every demo configuration — prevents publishing incomplete or unlabeled demo brands.
 - Theme colors/fonts are injected as CSS variables via `src/config/theme.ts` in the root head; components use only semantic tokens — keeps palette consistent and configurable.
 - Optional sections hide themselves (and their nav links) when their config is null/empty.

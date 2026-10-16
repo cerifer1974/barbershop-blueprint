@@ -10,7 +10,7 @@ import path from "node:path";
 
 let validated = false;
 
-/** Bloqueia o build de produção se barber.config.ts tiver problemas. */
+/** Bloqueia o build de produção se qualquer configuração tiver problemas. */
 function validateBarberConfigPlugin(): Plugin {
   return {
     name: "validate-barber-config",
@@ -25,12 +25,17 @@ function validateBarberConfigPlugin(): Plugin {
         resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
       });
       try {
-        const cfg = await server.ssrLoadModule("/src/config/barber.config.ts");
         const val = await server.ssrLoadModule("/src/config/validate-config.ts");
-        const issues = val["validateBarberConfig"](cfg["barberConfig"]) as { path: string; message: string }[];
-        if (issues.length) {
-          const list = issues.map((i) => `  - ${i.path}: ${i.message}`).join("\n");
-          throw new Error(`barber.config.ts inválido:\n${list}`);
+        for (const [file, exportName] of [
+          ["barber.config.ts", "barberConfig"],
+          ["horizonte.config.ts", "horizonteConfig"],
+        ] as const) {
+          const cfg = await server.ssrLoadModule(`/src/config/${file}`);
+          const issues = val["validateBarberConfig"](cfg[exportName]) as { path: string; message: string }[];
+          if (issues.length) {
+            const list = issues.map((i) => `  - ${i.path}: ${i.message}`).join("\n");
+            throw new Error(`${file} inválido:\n${list}`);
+          }
         }
       } finally {
         await server.close();
