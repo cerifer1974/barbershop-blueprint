@@ -1,18 +1,19 @@
 /**
  * CONFIGURAÇÃO — ESTILO & ATITUDE BARBERSHOP (POUSO ALEGRE - MG)
  * ------------------------------------------------------------------
- * Dados extraídos do Booksy, Instagram (@eeabarbershop) e Google Maps.
+ * Dados reais extraídos do Booksy, Instagram (@eeabarbershop) e Google Maps.
+ * Fotografias reais do salão, fachada e clientes da barbearia.
  */
 
 import type { BarberConfig } from "./barber.config";
-import heroImg from "@/assets/hero.jpg";
-import interiorImg from "@/assets/interior.jpg";
-import barber1Img from "@/assets/barber-1.jpg";
-import barber2Img from "@/assets/barber-2.jpg";
-import gallery1Img from "@/assets/gallery-1.jpg";
-import gallery2Img from "@/assets/gallery-2.jpg";
-import gallery3Img from "@/assets/gallery-3.jpg";
-import gallery4Img from "@/assets/gallery-4.jpg";
+
+import logoImg from "@/assets/estilo-atitude.jpeg";
+import fachadaImg from "@/assets/fachada-estilo-atitude.jpeg";
+import salaoImg from "@/assets/estilo-e-atitude-barbershop-salao.jpeg";
+import barbeiroImg from "@/assets/estilo-e-atitude-barbershop.jpeg";
+import cliente1Img from "@/assets/estilo-e-atitude-barbershop-cliente.jpeg";
+import cliente2Img from "@/assets/estilo-e-atitude-barbershop-cliente-1.jpeg";
+import cliente3Img from "@/assets/estilo-e-atitude-barbershop-cliente-2.jpeg";
 
 export const estiloEAtitudeConfig: BarberConfig = {
   isDemo: true,
@@ -24,7 +25,10 @@ export const estiloEAtitudeConfig: BarberConfig = {
     name: "Estilo & Atitude Barbershop",
     tagline: "Sua identidade, nosso compromisso",
     city: "Pouso Alegre — MG",
-    logo: null,
+    logo: {
+      src: logoImg,
+      alt: "Logotipo Oficial Estilo e Atitude Barbershop",
+    },
     footerText: "Estilo & Atitude Barbershop em Pouso Alegre. Qualidade, pontualidade e estilo em cada atendimento.",
   },
   theme: {
@@ -34,7 +38,7 @@ export const estiloEAtitudeConfig: BarberConfig = {
       surface: "oklch(0.19 0.012 45)",
       surfaceAlt: "oklch(0.23 0.015 45)",
       mutedForeground: "oklch(0.68 0.02 65)",
-      primary: "oklch(0.70 0.14 65)", // Tom âmbar/cobre moderno
+      primary: "oklch(0.70 0.14 65)",
       primaryForeground: "oklch(0.15 0.01 45)",
       light: "oklch(0.96 0.01 80)",
       lightForeground: "oklch(0.18 0.015 45)",
@@ -52,11 +56,11 @@ export const estiloEAtitudeConfig: BarberConfig = {
       "Agende seu corte e barba na Estilo & Atitude Barbershop em Pouso Alegre. Atendimento pontual e especializado.",
   },
   copy: {
-    nav: { about: "A Barbearia", services: "Serviços", team: "Equipe", gallery: "Trabalhos", contact: "Localização" },
+    nav: { about: "A Barbearia", services: "Serviços", team: "Profissional", gallery: "Trabalhos", contact: "Localização" },
     bookCta: "Agendar Horário",
     bookCtaShort: "Agendar →",
     heroSecondaryCta: "Ver Serviços e Preços",
-    finalCtaButton: "Agendar pelo Booksy / WhatsApp",
+    finalCtaButton: "Agendar no Booksy / WhatsApp",
     instagramCta: "Siga @eeabarbershop →",
     locationEyebrow: "Venha nos visitar",
     locationTitle: "Onde estamos",
@@ -89,16 +93,16 @@ export const estiloEAtitudeConfig: BarberConfig = {
     title: "Estilo único.",
     highlight: "Atitude em cada detalhe.",
     subtitle:
-      "Agende seu horário na Estilo & Atitude Barbershop. Cortes modernos, barba alinhada e atendimento de primeira em Pouso Alegre.",
-    image: heroImg,
-    imageAlt: "Barbeiro executando corte degradê na Estilo e Atitude Barbershop",
+      "Agende seu horário na Estilo & Atitude Barbershop. Cortes modernos, barba alinhada e atendimento com padrão de excelência em Pouso Alegre.",
+    image: fachadaImg,
+    imageAlt: "Fachada da Estilo e Atitude Barbershop no Jardim Noronha em Pouso Alegre",
   },
   about: {
-    eyebrow: "Nossa história",
+    eyebrow: "Nossa casa",
     title: "Mais que um corte, a sua melhor versão.",
     paragraphs: [
-      "Na Estilo & Atitude Barbershop, acreditamos que o corte de cabelo e o alinhamento da barba são extensões da sua confiança e personalidade.",
-      "Criamos um espaço acolhedor e dinâmico no Jardim Noronha para você ser atendido sem atrasos, com produtos de qualidade e barbeiros que entendem exatamente o que você procura.",
+      "Na Estilo & Atitude Barbershop, acreditamos que o corte de cabelo e o alinhamento da barba são extensões da sua confiança e identidade pessoal.",
+      "Criamos um espaço acolhedor e dinâmico na Av. Dr. Artur Ribeiro Guimarães para você ser atendido com agilidade, sem atrasos e com profissionais dedicados a valorizar o seu estilo.",
     ],
     stats: [
       { value: "5.0", label: "estrelas de avaliação" },
@@ -106,8 +110,8 @@ export const estiloEAtitudeConfig: BarberConfig = {
       { value: "Booksy", label: "agendamento 24h" },
     ],
     statsDisclaimer: "Informações públicas e avaliações de clientes.",
-    image: interiorImg,
-    imageAlt: "Interior da Estilo & Atitude Barbershop",
+    image: salaoImg,
+    imageAlt: "Ambiente interno e cadeiras da Estilo e Atitude Barbershop",
   },
   services: {
     eyebrow: "Cardápio de Serviços",
@@ -134,7 +138,7 @@ export const estiloEAtitudeConfig: BarberConfig = {
       },
       {
         name: "Perfil / Pezinho",
-        description: "Alinhamento das costeletas e nuca para manter o corte em dia.",
+        description: "Alinhamento das costeletas e nuca para manter o corte sempre alinhado.",
         durationMinutes: 15,
         price: "R$ 20",
       },
@@ -153,32 +157,32 @@ export const estiloEAtitudeConfig: BarberConfig = {
     ],
   },
   team: {
-    eyebrow: "Bancada",
+    eyebrow: "Quem atende",
     title: "Quem cuida do seu estilo",
     subtitle: "Profissionais prontos para entregar a melhor experiência na cadeira.",
     members: [
       {
-        name: "Equipe Estilo & Atitude",
-        role: "Mestres Barbeiros",
-        bio: "Especialistas em degradês modernos, barba na navalha e visagismo.",
-        image: barber1Img,
+        name: "Barbeiro Responsável",
+        role: "Fade & Visagismo Masculino",
+        bio: "Especialista em degradês modernos, barba na navalha e atendimento de alta precisão.",
+        image: barbeiroImg,
       },
       {
-        name: "Atendimento Premium",
-        role: "Barba & Acabamentos",
-        bio: "Precisão na navalha e cuidado para clientes exigentes.",
-        image: barber2Img,
+        name: "Ambiente & Cuidado",
+        role: "Estrutura do Salão",
+        bio: "Ambiente equipado com as melhores ferramentas e produtos do mercado.",
+        image: salaoImg,
       },
     ],
   },
   gallery: {
-    eyebrow: "Galeria",
-    title: "Confira nossos resultados",
+    eyebrow: "Galeria de Clientes",
+    title: "Confira nossos resultados reais",
     images: [
-      { src: gallery1Img, alt: "Corte degradê de alta precisão" },
-      { src: gallery2Img, alt: "Alinhamento de barba na navalha" },
-      { src: gallery3Img, alt: "Equipamentos profissionais e ambiente limpo" },
-      { src: gallery4Img, alt: "Cliente satisfeito após atendimento" },
+      { src: cliente1Img, alt: "Corte degradê navalhado realizado na Estilo e Atitude" },
+      { src: cliente2Img, alt: "Alinhamento e corte em cliente na barbearia" },
+      { src: cliente3Img, alt: "Corte estilizado e barba alinhada" },
+      { src: salaoImg, alt: "Visão interna do salão Estilo e Atitude" },
     ],
   },
   testimonials: {

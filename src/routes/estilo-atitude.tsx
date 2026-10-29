@@ -22,3 +22,4 @@ export const Route = createFileRoute("/estilo-atitude")({
 function EstiloAtitudePage() {
   return <BarberLanding config={estiloEAtitudeConfig} themeId="estilo-atitude" />;
 }
+
