@@ -150,7 +150,7 @@ export interface BarberConfig {
 }
 
 export const barberConfig: BarberConfig = {
-  isDemo: false,
+  isDemo: true,
   locale: {
     lang: "pt-BR",
     phoneCountryCode: "55",
@@ -243,7 +243,7 @@ export const barberConfig: BarberConfig = {
       { value: "12k+", label: "cortes realizados" },
       { value: "4,9", label: "nota no Google Maps" },
     ],
-    statsDisclaimer: null,
+    statsDisclaimer: "Dados estimados com base na equipe e avaliações públicas da barbearia.",
     image: oficinaInterior,
     imageAlt: "Infraestrutura completa e poltronas da Oficina Barbearia em Pouso Alegre",
   },
