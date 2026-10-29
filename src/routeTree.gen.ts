@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EstiloAtitudeRouteImport } from './routes/estilo-atitude'
 import { Route as HorizonteRouteImport } from './routes/horizonte'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstiloAtitudeRoute = EstiloAtitudeRouteImport.update({
+  id: '/estilo-atitude',
+  path: '/estilo-atitude',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HorizonteRoute = HorizonteRouteImport.update({
@@ -25,27 +31,31 @@ const HorizonteRoute = HorizonteRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/estilo-atitude': typeof EstiloAtitudeRoute
   '/horizonte': typeof HorizonteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/estilo-atitude': typeof EstiloAtitudeRoute
   '/horizonte': typeof HorizonteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/estilo-atitude': typeof EstiloAtitudeRoute
   '/horizonte': typeof HorizonteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/horizonte'
+  fullPaths: '/' | '/estilo-atitude' | '/horizonte'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/horizonte'
-  id: '__root__' | '/' | '/horizonte'
+  to: '/' | '/estilo-atitude' | '/horizonte'
+  id: '__root__' | '/' | '/estilo-atitude' | '/horizonte'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EstiloAtitudeRoute: typeof EstiloAtitudeRoute
   HorizonteRoute: typeof HorizonteRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estilo-atitude': {
+      id: '/estilo-atitude'
+      path: '/estilo-atitude'
+      fullPath: '/estilo-atitude'
+      preLoaderRoute: typeof EstiloAtitudeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/horizonte': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EstiloAtitudeRoute: EstiloAtitudeRoute,
   HorizonteRoute: HorizonteRoute,
 }
 export const routeTree = rootRouteImport
