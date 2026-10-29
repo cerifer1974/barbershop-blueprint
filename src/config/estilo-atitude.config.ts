@@ -33,15 +33,15 @@ export const estiloEAtitudeConfig: BarberConfig = {
   },
   theme: {
     colors: {
-      background: "oklch(0.15 0.01 45)",
-      foreground: "oklch(0.95 0.01 80)",
-      surface: "oklch(0.19 0.012 45)",
-      surfaceAlt: "oklch(0.23 0.015 45)",
+      background: "oklch(0.13 0.01 45)",
+      foreground: "oklch(0.96 0.01 80)",
+      surface: "oklch(0.17 0.012 45)",
+      surfaceAlt: "oklch(0.21 0.015 45)",
       mutedForeground: "oklch(0.68 0.02 65)",
-      primary: "oklch(0.70 0.14 65)",
-      primaryForeground: "oklch(0.15 0.01 45)",
-      light: "oklch(0.96 0.01 80)",
-      lightForeground: "oklch(0.18 0.015 45)",
+      primary: "oklch(0.72 0.17 48)", // Laranja/âmbar quente vibrante da logo
+      primaryForeground: "oklch(0.12 0.01 45)",
+      light: "oklch(0.965 0.01 80)",
+      lightForeground: "oklch(0.16 0.015 45)",
     },
     fonts: {
       display: '"Oswald", "Bebas Neue", sans-serif',

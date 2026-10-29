@@ -14,4 +14,5 @@
 - The original brand stays at `/`; `/horizonte` renders the same landing composition with its own configuration and route-scoped theme and font stylesheet — isolates brand styling without a redesign.
 - Production build validation must check every demo configuration — prevents publishing incomplete or unlabeled demo brands.
 - Theme colors/fonts are injected as CSS variables via `src/config/theme.ts` in the root head; components use only semantic tokens — keeps palette consistent and configurable.
+- **Brand Palette Rule (CRITICAL)**: Whenever creating or configuring a client landing page, the `theme.colors.primary` and accent shades MUST be extracted directly from the client's logo (e.g. vibrant orange, gold, amber, deep red, cobalt). This guarantees each landing page feels unique and visually faithful to the client's established brand identity.
 - Optional sections hide themselves (and their nav links) when their config is null/empty.

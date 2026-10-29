@@ -37,12 +37,20 @@ export interface Testimonial {
 }
 
 export interface ThemeConfig {
+  /** 
+   * Paleta de cores da marca.
+   * REGRA OBRIGATÓRIA DE DESIGN:
+   * A cor `primary` (e tons derivados de surface/accent) DEVE ser extraída
+   * diretamente da cor predominante da LOGOTIPO do cliente (ex: ouro, cobre, laranja, bordô, azul navy).
+   * Aceita formatos: oklch, hex (#RRGGBB) ou rgb.
+   */
   colors: {
     background: string;
     foreground: string;
     surface: string;
     surfaceAlt: string;
     mutedForeground: string;
+    /** Cor primária de destaque (botões, detalhes, bordas) — EXTRAÍDA DA LOGO */
     primary: string;
     primaryForeground: string;
     light: string;
