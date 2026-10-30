@@ -2,13 +2,32 @@ import { ArrowRight } from "lucide-react";
 import { useBarberConfig } from "@/config/barber-context";
 
 export function Hero() {
-  const { hero, links, copy, services } = useBarberConfig();
+  const { hero, links, copy, services, brand } = useBarberConfig();
 
   return (
     <section id="topo" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-28 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-14 md:px-8 md:pb-24 md:pt-40">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+          {/* Selo oficial com o Logo da Barbearia */}
+          {brand.logo && (
+            <div className="mb-6 inline-flex items-center gap-3.5 rounded-full border border-primary/30 bg-card/60 px-4 py-2 backdrop-blur-sm">
+              <img
+                src={brand.logo.src}
+                alt={brand.logo.alt}
+                className="size-11 rounded-full border border-primary/40 object-cover shadow-md"
+              />
+              <div className="flex flex-col text-left">
+                <span className="font-display text-sm tracking-wider uppercase text-foreground">
+                  {brand.name}
+                </span>
+                <span className="text-[11px] font-medium uppercase tracking-widest text-primary">
+                  {brand.city}
+                </span>
+              </div>
+            </div>
+          )}
+
+          <p className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             <span className="h-px w-8 bg-primary" />
             {hero.eyebrow}
           </p>

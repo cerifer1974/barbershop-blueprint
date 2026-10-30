@@ -98,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           rel: "stylesheet",
           href: appCss,
         },
-        { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+        { rel: "icon", href: config.brand.logo ? config.brand.logo.src : "/favicon.ico" },
       ],
       styles: [{ children: buildThemeCss(config.theme) }],
     };

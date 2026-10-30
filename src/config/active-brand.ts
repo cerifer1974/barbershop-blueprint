@@ -39,3 +39,4 @@ export function getActiveBrand(): { config: BarberConfig; themeId?: string } {
 
   return { config: barberConfig, themeId: undefined };
 }
+

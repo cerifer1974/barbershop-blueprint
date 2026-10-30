@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[2fr_1fr_1fr] md:px-8">
         <div>
-          <BrandMark />
+          <BrandMark size="large" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             {brand.footerText}
           </p>
